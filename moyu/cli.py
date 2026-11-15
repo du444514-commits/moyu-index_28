@@ -10,7 +10,12 @@ from .render import bar
 
 def _ask_number(prompt, default):
     """读取一个非负数字，回车则使用默认值。"""
-    raw = input(prompt).strip()
+    try:
+        raw = input(prompt).strip()
+    except EOFError:
+        print()
+        print("   -> 检测到输入流结束（Ctrl+D），改用默认值 %s" % default)
+        return default
     if not raw:
         return default
     try:
