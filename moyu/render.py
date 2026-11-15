@@ -11,10 +11,10 @@ def bar(score, width=DEFAULT_WIDTH):
         width: 进度条总格数
 
     返回:
-        str，例如 "[██████████░░░░░░░░░░]"
+        str，例如 "摸鱼 █████░░░░░ 50%"
     """
     if width <= 0:
         raise ValueError("width 必须为正数")
     score = max(0, min(100, int(score)))
     filled = round(width * score / 100)
-    return "[" + "█" * filled + "░" * (width - filled) + "]"
+    return "摸鱼 " + "█" * filled + "░" * (width - filled) + " %d%%" % score

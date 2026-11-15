@@ -72,15 +72,14 @@ class TestLevel(unittest.TestCase):
 
 class TestBar(unittest.TestCase):
     def test_零分全部为空(self):
-        self.assertEqual(bar(0, width=10), "[..........]")
+        self.assertEqual(bar(0, width=10), "摸鱼 ░░░░░░░░░░ 0%")
 
     def test_满分全部填满(self):
-        self.assertEqual(bar(100, width=10), "[==========]")
+        self.assertEqual(bar(100, width=10), "摸鱼 ██████████ 100%")
 
     def test_半格宽度正确(self):
         result = bar(50, width=10)
-        self.assertEqual(len(result), 12)
-        self.assertEqual(result, "[=====.....]")
+        self.assertEqual(result, "摸鱼 █████░░░░░ 50%")
 
     def test_非法宽度报错(self):
         with self.assertRaises(ValueError):
